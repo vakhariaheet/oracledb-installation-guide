@@ -36,7 +36,7 @@ This is a guide to install OracleDB on Windows, Ubuntu and Mac.
 6. Verify if OracleDB is installed by running `docker exec -it oracle sqlplus / as sysdba`.
 7. You have successfully installed OracleDB on Windows 🎉
 8. You can now connect to OracleDB using `docker exec -it oracle sqlplus / as sysdba` in command prompt.
-9. *Note*: After restarting your computer, you will have to run `docker start oracle` to start the OracleDB container.
+9. **Note**: After restarting your computer, you will have to run `docker start oracle` to start the OracleDB container.
 
 ### Ubuntu
 1. Download ubuntu-oracle-Install.sh from [here](/ubuntu-oracle-Install.sh) (Download the file by clicking on the download button) and save it in a folder.
