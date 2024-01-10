@@ -25,7 +25,13 @@ echo "Creating Docker Container"
 sudo docker run --name oracle -d -p 1521:1521 container-registry.oracle.com/database/free:latest
 echo "Container Created Succesfully"
 echo "Adding Alias to bashrc file"
-echo 'alias sqlplus="docker exec -it oracle sqlplus / as sysdba"' >> ~/.bashrc
+rm -rf ~/sqlplus.sh
+echo "if [ docker ps -a | grep oracle ] then" >> ~/sqlplus.sh
+echo "docker exec -it oracle sqlplus / as sysdba" >> ~/sqlplus.sh
+echo "else" >> ~/sqlplus.sh
+echo "sudo docker run --name oracle -d -p 1521:1521 container-registry.oracle.com/database/free:latest && docker exec -it oracle sqlplus / as sysdba" >> ~/sqlplus.sh
+echo "fi" >> ~/sqlplus.sh
+echo 'alias sqlplus="docker restart oracle && docker exec -it oracle sqlplus / as sysdba"' >> ~/.bashrc
 source ~/.bashrc
 echo "Alias Added Succesfully"
 echo "Installation Completed Succesfully"

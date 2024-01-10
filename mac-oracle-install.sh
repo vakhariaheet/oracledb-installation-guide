@@ -31,8 +31,10 @@ fi
 docker pull container-registry.oracle.com/database/free:latest
 # Creating the oracle database container
 docker run --name oracle -d -p 1521:1521 container-registry.oracle.com/database/free:latest
-# Adding an alias to the bashrc file
-echo 'alias sqlplus="docker exec -it oracle sqlplus / as sysdba"' >> ~/.bashrc
+
+# Checking if sqlplus alias is already present in bashrc file and removing it if present
+echo "Adding sqlplus alias to bashrc file"
+echo 'alias sqlplus="colima restart && docker restart oracle && docker exec -it oracle sqlplus / as sysdba"' >> ~/.bashrc
 # Sourcing the bashrc file
 source ~/.bashrc
 # Printing a success message
